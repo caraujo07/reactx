@@ -1,0 +1,14 @@
+.userOut {
+  position: relative;
+  top: 200px;
+  padding: 10px 0;
+  margin: 10px auto;
+  width: 20%;
+  height: 100px;
+  border: 2px solid #84e;
+  border-radius: 5px;
+}
+
+.userOut p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}

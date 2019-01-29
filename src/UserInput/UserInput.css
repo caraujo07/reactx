@@ -1,0 +1,37 @@
+body {
+  margin: 0!important;
+  padding: 0!important;
+}
+.userIn {
+  background: #eee;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin: 0;
+  padding: 30px 0;
+}
+.userIn h1 {
+  font-family: monospace;
+  color: #84e;
+}
+
+.userIn label {
+  padding-right: 5px;
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.userIn input {
+  width: 200px;
+  padding: 5px;
+  color: #FFF;
+  background-color: #84e;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+} 
+
+.userIn input:focus {
+  outline: none;
+}
