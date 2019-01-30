@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
@@ -91,54 +92,43 @@ togglePersonsHandler = () => {
 }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid green',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
 
     // A melhor forma de mostrar um conteúdo via condicional é aproveitando o fato do react renderizar as coisas antes do return, logo pode-se utilizar javascript comum para utilizar o if como opção à verificação ternária.
     let persons = null;
+    let btnClass = '';
    
     if(this.state.showPersons) {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person 
-              click={() => this.deletePersonHandler(index)}
-              name={person.name} 
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangeHandler(event, person.id)} />
+            return <ErrorBoundary key={person.id}> <Person 
+                click={() => this.deletePersonHandler(index)}
+                name={person.name} 
+                age={person.age}
+                changed={(event) => this.nameChangeHandler(event, person.id)} />
+              </ErrorBoundary>
           })}
        </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'  
-      }
+
+      btnClass = classes.Red;
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red'); //classes = ['red']
+      assignedClasses.push(classes.red); //classes = ['red']
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold'); //classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); //classes = ['red', 'bold']
     } 
 
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
+          <p className={assignedClasses.join(' ')}>This is really working!</p>
 
           <button
-            style={style}
+          className = {btnClass}
             onClick={this.togglePersonsHandler}>Toggle Persons
           </button>
         
